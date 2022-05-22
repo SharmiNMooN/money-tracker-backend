@@ -18,9 +18,26 @@ module.exports = {
                 success: false,
                 message: "An error occur"
             });
+        }
+    },
+
+    async getAllCategories(req, res){
+        try{
+
+            const categories = await categoryService.getAllCategories();
+            return res.status(200).send({
+                success:true,
+                message:"categories get successfully",
+                data: categories
+            })
+
+        } catch(err){
+            return res.status(500).send({
+                success: false,
+                message: "An error occur"
+            });
 
         }
-
 
     }
 }
