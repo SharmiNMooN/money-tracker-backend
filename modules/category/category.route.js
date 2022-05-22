@@ -7,7 +7,8 @@ router.post('/api/v1/categories',categoryController.createCategory);
 
 // api for get all categories
 router.get('/api/v1/categories', categoryController.getAllCategories);
-
+ // api for update categories
+ router.patch('/api/v1/categories/:categoryId', categoryController.updateCategory);
 
 
 module.exports = router;

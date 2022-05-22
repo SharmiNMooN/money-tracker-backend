@@ -38,6 +38,25 @@ module.exports = {
             });
 
         }
+    },
+    async updateCategory(req,res){
+        try{
+            // const categoryId = req.params.categoryId;
+            const {categoryId} = req.params;
+            const payload = req.body;
 
+
+            const category = await categoryService.updateCategory(categoryId, payload);
+            return res.status(200).send({
+                succes: true,
+                message: "category updated successfully",
+                data: category
+            })
+        }catch(err){
+            return res.status(500).send({
+                succes:false,
+                message: "An error occur"
+            });
+        }
     }
 }

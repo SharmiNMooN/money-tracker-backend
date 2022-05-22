@@ -8,6 +8,9 @@ module.exports = {
     async getAllCategories() {
         return await categoryModel.find()
 
+    },
+    async updateCategory(categoryId,payload){
+        return await categoryModel.findOneAndUpdate({_id:categoryId},payload,{new: true})
     }
 
     
