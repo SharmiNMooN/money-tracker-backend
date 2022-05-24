@@ -9,6 +9,9 @@ router.post('/api/v1/categories',categoryController.createCategory);
 router.get('/api/v1/categories', categoryController.getAllCategories);
  // api for update categories
  router.patch('/api/v1/categories/:categoryId', categoryController.updateCategory);
+ // api for delete categories
+ router.delete('/api/v1/categories/:categoryId', categoryController.removeCategory);
+
 
 
 module.exports = router;

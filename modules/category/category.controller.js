@@ -7,7 +7,7 @@ module.exports = {
             console.log(payload);
             const category = await categoryService.createCategory(payload);
             return res.status(201).send({
-                succes: true,
+                success: true,
                 message: "Category created successfully",
                 data: category
             })
@@ -25,7 +25,7 @@ module.exports = {
         try{
 
             const categories = await categoryService.getAllCategories();
-            return res.status(200).send({
+            return res.status(201).send({
                 success:true,
                 message:"categories get successfully",
                 data: categories
@@ -58,5 +58,22 @@ module.exports = {
                 message: "An error occur"
             });
         }
-    }
+    },
+    async removeCategory(req,res){
+        try{
+        const {categoryId} = req.params;
+
+        const category = await categoryService.deleteCategory(categoryId);
+         return res.status(200).send({
+            succes:true,
+            message: "category deleted successfuilly",
+            data: categoryId
+         })
+        }catch(err){
+            return res.status(500).send({
+                succes:false,
+                 message: "An error occur"
+             });
+        }
+     }
 }

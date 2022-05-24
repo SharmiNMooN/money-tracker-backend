@@ -1,3 +1,4 @@
+const { deleteCategory } = require("./category.controller");
 const categoryModel = require("./category.model");
 
 module.exports = {
@@ -11,6 +12,9 @@ module.exports = {
     },
     async updateCategory(categoryId,payload){
         return await categoryModel.findOneAndUpdate({_id:categoryId},payload,{new: true})
+    },
+    async deleteCategory(categoryId){
+        return await categoryModel.findOneAndRemove({_id:categoryId})
     }
 
     
