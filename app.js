@@ -1,5 +1,6 @@
 const express = require("express");
 const categoryRouter = require('./modules/category/category.route');
+const incomeRouter = require('./modules/income/income.route');
 const {connectDB} = require('./config/db');
 
 const app = express();
@@ -22,6 +23,7 @@ app.get("/",(req,res)=>{
 
 });
 app.use('/',categoryRouter);
+app.use('/',incomeRouter);
 app.listen(port,()=>{
     console.log(`server is running in port ${port}`);
 })

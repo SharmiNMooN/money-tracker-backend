@@ -48,13 +48,13 @@ module.exports = {
 
             const category = await categoryService.updateCategory(categoryId, payload);
             return res.status(200).send({
-                succes: true,
+                success: true,
                 message: "category updated successfully",
                 data: category
             })
         }catch(err){
             return res.status(500).send({
-                succes:false,
+                success:false,
                 message: "An error occur"
             });
         }
@@ -71,7 +71,7 @@ module.exports = {
          })
         }catch(err){
             return res.status(500).send({
-                succes:false,
+                success:false,
                  message: "An error occur"
              });
         }
