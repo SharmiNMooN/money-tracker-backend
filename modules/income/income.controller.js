@@ -1,3 +1,4 @@
+const { status } = require("express/lib/response");
 const res = require("express/lib/response");
 const incomeService = require("./income.service");
 
@@ -59,6 +60,25 @@ module.exports = {
            });
 
        }
+    },
+    removeIncome: async(req, res)=>{
+        try{
+            const incomeId = req.params.incomeId;
+            const income = await incomeService.deleteIncome(incomeId);
+            return res.status(200).send({
+                success: true,
+                message: "incomeId delete successfully",
+                data: income
+            })
+        
+        }catch(err){
+            return res.status(500).send({
+                success: false,
+                message: "An error occur"
+
+            });
+
+        }
     }
 }
 

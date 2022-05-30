@@ -11,6 +11,8 @@ router.post('/api/v1/incomes', incomeController.createIncome);
 router.get('/api/v1/incomes', incomeController.getAllIncomes);
 //api for upadetd income
 router.patch('/api/v1/incomes/:incomeId', incomeController.updateIncome);
+//api for delete income
+router.delete('/api/v1/incomes/:incomeId', incomeController.removeIncome);
 
 
 
