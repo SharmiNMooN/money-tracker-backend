@@ -56,8 +56,23 @@ module.exports = {
                 message: "An error occur"
             })
         }
+    },
+    removeExpense: async(req,res)=>{
+        try{
+            const expenseId = req.params.expenseId;
+            const expense = await expenseService.deleteExpense(expenseId);
+            return res.status(200).send({
+                success: true,
+                message: " expenseDelete api done successfully",
+                data: expense
+            })
 
-
+        }catch(err){
+            console.log(err)
+            return res.status(500).send({
+                success: false,
+                message: "An error occur"
+            });
+        }
     }
-
 }

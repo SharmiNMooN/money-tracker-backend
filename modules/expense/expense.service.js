@@ -1,7 +1,7 @@
 
+const { expenseUpdate } = require('../expense/expense.service');
 
-
-const {getAllExpenses} = require('./expense.controller');
+const {getAllExpenses, removeExpense} = require('./expense.controller');
 const expenseModel = require('./expense.model');
 
 module.exports = {
@@ -13,5 +13,9 @@ module.exports = {
     },
     async expenseUpdate(expenseId,payload){
         return await expenseModel.findOneAndUpdate({_id:expenseId}, payload, {new:true});
+    },
+    async deleteExpense(expenseId){
+        return await expenseModel.findOneAndRemove({_id:expenseId});
     }
+
 }
