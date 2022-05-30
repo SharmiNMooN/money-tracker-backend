@@ -37,6 +37,27 @@ module.exports = {
         });
     }
     
-}
+},
+    updateExpense: async(req, res)=>{
+        try{
+            const expenseId = req.params.expenseId;
+            const payload = req.body;
+            const expense = await expenseService.expenseUpdate(expenseId,payload);
+            return res.status(200).send({
+                success: true,
+                meassge: "expenseUpdate api done successfully",
+                data: expense
+            })
+
+        }catch(err){
+            console.log(err);
+            return res.status(500).send({
+                success: false,
+                message: "An error occur"
+            })
+        }
+
+
+    }
 
 }

@@ -5,9 +5,12 @@ const expenseController = require('./expense.controller');
 const router = express.Router();
 
 // api for create expense api for save
-
 router.post('/api/v1/expenses', expenseController.createExpense);
-//getAll api for get expense for view
 
+//getAll api for get expense for view
 router.get('/api/v1/expenses', expenseController.getAllExpenses);
+
+//updated api for expense
+router.patch('/api/v1/expenses/:expenseId', expenseController.updateExpense);
+
 module.exports = router;

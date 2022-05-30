@@ -1,7 +1,7 @@
 
 
 
-const { getAllExpenses } = require('./expense.controller');
+const {getAllExpenses} = require('./expense.controller');
 const expenseModel = require('./expense.model');
 
 module.exports = {
@@ -10,5 +10,8 @@ module.exports = {
     },
     async getAllExpenses(){
         return await expenseModel.find();
+    },
+    async expenseUpdate(expenseId,payload){
+        return await expenseModel.findOneAndUpdate({_id:expenseId}, payload, {new:true});
     }
 }
