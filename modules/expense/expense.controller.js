@@ -20,8 +20,23 @@ module.exports = {
                 message:"An error occur"
             });
 
-
         }
+    },
+    getAllExpenses: async(req,res)=>{
+        try{
+        const expenses = await expenseService.getAllExpenses();
+        return res.status(200).send({
+            success: true,
+            message: "getAllExpense api done successfully",
+            data: expenses
+        })
+    }catch(err){
+        return res.status(500).send({
+            success: false,
+            message: "An error occur"
+        });
     }
+    
+}
 
 }
