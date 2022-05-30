@@ -1,3 +1,4 @@
+const res = require("express/lib/response");
 const incomeService = require("./income.service");
 
 
@@ -23,6 +24,42 @@ module.exports = {
                 
                 });
             }
+        },
+        getAllIncomes: async(req,res)=>{
+        try{
+            const incomes = await incomeService.getAllIncomes();
+            return res.status(200).send({
+                success:true,
+                message:"getAllIncomes successfully",
+                data: incomes
+            })
+        } catch(err){
+            return res.status(500).send({
+                success: false,
+                message: "An error occur"
+            });
         }
-            
-   }
+   },
+   updateIncome: async(req, res)=>{
+       try{
+           const incomeId = req.params.incomeId;
+           const payload= req.body;
+           const income = await incomeService.updateIncome(incomeId,payload);
+           return res.status(200).send({
+               success: true,
+               message: "incomeId updated successsfully",
+               data: income
+           })
+        
+
+       }catch(err){
+           return res.status(500).send({
+               success: false,
+               message: "An error occur "
+           });
+
+       }
+    }
+}
+
+   
