@@ -1,8 +1,7 @@
-const express = require("express");
-const incomeController = require("./income.controller");
+const express = require('express');
+const incomeController = require('./income.controller');
 
-const router  = express.Router();
-
+const router = express.Router();
 
 //api for create income for save
 router.post('/api/v1/incomes', incomeController.createIncome);
@@ -13,9 +12,5 @@ router.get('/api/v1/incomes', incomeController.getAllIncomes);
 router.patch('/api/v1/incomes/:incomeId', incomeController.updateIncome);
 //api for delete income
 router.delete('/api/v1/incomes/:incomeId', incomeController.removeIncome);
-
-
-
-
 
 module.exports = router;
