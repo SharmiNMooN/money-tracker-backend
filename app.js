@@ -2,6 +2,7 @@ const express = require('express');
 const categoryRouter = require('./modules/category/category.route');
 const incomeRouter = require('./modules/income/income.route');
 const expenseRouter = require('./modules/expense/expense.route');
+const authRouter = require('./modules/auth/auth.route');
 const { connectDB } = require('./config/db');
 
 const app = express();
@@ -22,6 +23,7 @@ app.get('/', (req, res) => {
         message: 'welcome to money tracker service',
     });
 });
+app.use('/',authRouter);
 app.use('/', categoryRouter);
 app.use('/', incomeRouter);
 app.use('/', expenseRouter);

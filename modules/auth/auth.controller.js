@@ -1,3 +1,7 @@
+const {validateEmail}=require("../common/common.helper");
+const userService = require('../user/user.service');
+
+
 module.exports = {
 
     registerUser: async(req,res)=>{
@@ -20,6 +24,25 @@ module.exports = {
 
                 })
             }
+            if(!payload.password){
+                return res.status(422).send({
+                    success: false,
+                    message: "password is requird"
+
+                })
+            }
+
+            const isValidEmail = validateEmail(payload.email);
+            console.log(isValidEmail);
+            if(!isValidEmail){
+                return res.status(422).send({
+                    success: false,
+                    message: "email is not valid"
+
+                })
+
+            }
+
             
 
 
